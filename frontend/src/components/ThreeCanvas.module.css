@@ -1,0 +1,9 @@
+.canvasContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 50; /* Above backgrounds, below text */
+  pointer-events: none; /* Let clicks pass through to DOM */
+}

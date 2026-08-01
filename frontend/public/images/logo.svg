@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7c5c1e"/>
+      <stop offset="30%" stop-color="#c9a84c"/>
+      <stop offset="50%" stop-color="#f0d080"/>
+      <stop offset="70%" stop-color="#c9a84c"/>
+      <stop offset="100%" stop-color="#7c5c1e"/>
+    </linearGradient>
+    <linearGradient id="goldText" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8b6320"/>
+      <stop offset="40%" stop-color="#f0d080"/>
+      <stop offset="60%" stop-color="#dab96a"/>
+      <stop offset="100%" stop-color="#8b6320"/>
+    </linearGradient>
+    <radialGradient id="bg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#1a1a2e"/>
+      <stop offset="100%" stop-color="#070709"/>
+    </radialGradient>
+  </defs>
+  
+  <!-- Background -->
+  <circle cx="100" cy="100" r="100" fill="url(#bg)"/>
+  
+  <!-- Outer ornate ring -->
+  <circle cx="100" cy="100" r="90" fill="none" stroke="url(#gold)" stroke-width="1.5"/>
+  <circle cx="100" cy="100" r="86" fill="none" stroke="url(#gold)" stroke-width="0.5" stroke-dasharray="4 3"/>
+  
+  <!-- Decorative flourishes - top -->
+  <path d="M100 18 L100 10 M100 18 C105 14 110 16 108 22 M100 18 C95 14 90 16 92 22" fill="none" stroke="url(#gold)" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M80 16 C75 10 68 12 72 20 M120 16 C125 10 132 12 128 20" fill="none" stroke="url(#gold)" stroke-width="1.2" stroke-linecap="round"/>
+  
+  <!-- Decorative flourishes - bottom -->
+  <path d="M100 182 L100 190 M100 182 C105 186 110 184 108 178 M100 182 C95 186 90 184 92 178" fill="none" stroke="url(#gold)" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M80 184 C75 190 68 188 72 180 M120 184 C125 190 132 188 128 180" fill="none" stroke="url(#gold)" stroke-width="1.2" stroke-linecap="round"/>
+  
+  <!-- Decorative flourishes - left -->
+  <path d="M18 100 L10 100 M18 100 C14 105 16 110 22 108 M18 100 C14 95 16 90 22 92" fill="none" stroke="url(#gold)" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M16 80 C10 75 12 68 20 72 M16 120 C10 125 12 132 20 128" fill="none" stroke="url(#gold)" stroke-width="1.2" stroke-linecap="round"/>
+  
+  <!-- Decorative flourishes - right -->
+  <path d="M182 100 L190 100 M182 100 C186 105 184 110 178 108 M182 100 C186 95 184 90 178 92" fill="none" stroke="url(#gold)" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M184 80 C190 75 188 68 180 72 M184 120 C190 125 188 132 180 128" fill="none" stroke="url(#gold)" stroke-width="1.2" stroke-linecap="round"/>
+  
+  <!-- Corner flourishes -->
+  <path d="M38 38 C30 30 25 35 32 42 M38 38 C30 46 35 48 42 42" fill="none" stroke="url(#gold)" stroke-width="1" stroke-linecap="round"/>
+  <path d="M162 38 C170 30 175 35 168 42 M162 38 C170 46 165 48 158 42" fill="none" stroke="url(#gold)" stroke-width="1" stroke-linecap="round"/>
+  <path d="M38 162 C30 170 35 175 42 168 M38 162 C46 170 48 165 42 158" fill="none" stroke="url(#gold)" stroke-width="1" stroke-linecap="round"/>
+  <path d="M162 162 C170 170 165 175 158 168 M162 162 C154 170 152 165 158 158" fill="none" stroke="url(#gold)" stroke-width="1" stroke-linecap="round"/>
+  
+  <!-- Inner circle -->
+  <circle cx="100" cy="100" r="58" fill="none" stroke="url(#gold)" stroke-width="2.5"/>
+  <circle cx="100" cy="100" r="52" fill="none" stroke="url(#gold)" stroke-width="0.8"/>
+  
+  <!-- Inner background -->
+  <circle cx="100" cy="100" r="51" fill="#0a0a12" opacity="0.9"/>
+  
+  <!-- SJ Letters -->
+  <text x="100" y="112" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="52" font-weight="bold" fill="url(#goldText)" letter-spacing="2">SJ</text>
+  
+  <!-- Bottom text -->
+  <text x="100" y="158" text-anchor="middle" font-family="Arial, sans-serif" font-size="7" fill="#c9a84c" letter-spacing="5" text-transform="uppercase">PREMIUM ARTISTRY</text>
+  <text x="100" y="168" text-anchor="middle" font-family="Arial, sans-serif" font-size="6" fill="#8a7a58" letter-spacing="3">EST. 2021</text>
+</svg>

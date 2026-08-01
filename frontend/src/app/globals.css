@@ -1,0 +1,246 @@
+/* ============================================================
+   M/S SUMAN JEWELLERS — Global Design System
+   ============================================================ */
+
+/* ── Variables ─────────────────────────────────────────────── */
+:root {
+  /* Color palette */
+  --obsidian:       #070709;
+  --obsidian-2:     #0f0f15;
+  --marble:         #13131e;
+  --marble-2:       #1c1c2e;
+
+  --gold-900:       #5a3e0e;
+  --gold-700:       #8b6320;
+  --gold-500:       #c9a84c;
+  --gold-400:       #dab96a;
+  --gold-200:       #f0d080;
+  --gold-100:       #f8ecc0;
+
+  --ivory:          #f5f0e8;
+  --ivory-dim:      #c8bfad;
+  --platinum:       #d8d8e0;
+  --platinum-dim:   #8a8a98;
+
+  --red-accent:     #8b1a1a;
+
+  /* Gradients */
+  --grad-gold:      linear-gradient(135deg, var(--gold-700) 0%, var(--gold-200) 50%, var(--gold-700) 100%);
+  --grad-dark:      linear-gradient(180deg, var(--obsidian) 0%, var(--marble) 100%);
+  --grad-card:      linear-gradient(145deg, rgba(28,28,46,0.95) 0%, rgba(15,15,21,0.98) 100%);
+
+  /* Typography */
+  --font-serif:     'Cormorant Garamond', Georgia, serif;
+  --font-sans:      'Inter', system-ui, sans-serif;
+
+  /* Spacing */
+  --section-py:     clamp(80px, 10vw, 140px);
+  --max-w:          1280px;
+
+  /* Effects */
+  --glass-bg:       rgba(15, 15, 21, 0.72);
+  --glass-border:   rgba(201, 168, 76, 0.18);
+  --shadow-gold:    0 0 40px rgba(201, 168, 76, 0.12);
+  --shadow-deep:    0 24px 80px rgba(0, 0, 0, 0.7);
+}
+
+/* ── Reset & Base ───────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  color-scheme: dark;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--obsidian);
+  color: var(--ivory);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--obsidian); }
+::-webkit-scrollbar-thumb {
+  background: var(--gold-700);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--gold-500); }
+
+/* Selection */
+::selection {
+  background: rgba(201, 168, 76, 0.25);
+  color: var(--gold-200);
+}
+
+/* ── Typography Utilities ───────────────────────────────────── */
+.font-serif   { font-family: var(--font-serif); }
+.font-sans    { font-family: var(--font-sans); }
+
+.gold-text {
+  background: var(--grad-gold);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% auto;
+}
+
+/* ── Shimmer Animation ──────────────────────────────────────── */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--gold-700) 0%,
+    var(--gold-200) 40%,
+    var(--gold-500) 60%,
+    var(--gold-700) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 4s linear infinite;
+}
+
+/* ── Glass Card ─────────────────────────────────────────────── */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+}
+
+/* ── Gold Divider ───────────────────────────────────────────── */
+.gold-divider {
+  width: 80px;
+  height: 2px;
+  background: var(--grad-gold);
+  margin: 0 auto;
+  border-radius: 2px;
+}
+
+/* ── Section Wrapper ────────────────────────────────────────── */
+.section-wrapper {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: var(--section-py) clamp(20px, 5vw, 60px);
+}
+
+/* ── Button Styles ──────────────────────────────────────────── */
+.btn-gold {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 36px;
+  background: var(--grad-gold);
+  background-size: 200% auto;
+  color: var(--obsidian);
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-position 0.5s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  text-decoration: none;
+}
+
+.btn-gold:hover {
+  background-position: right center;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(201, 168, 76, 0.35);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 36px;
+  background: transparent;
+  color: var(--gold-400);
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: 1px solid var(--gold-700);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.btn-outline:hover {
+  background: rgba(201, 168, 76, 0.08);
+  border-color: var(--gold-400);
+  color: var(--gold-200);
+  transform: translateY(-2px);
+}
+
+/* ── Section Heading ────────────────────────────────────────── */
+.section-label {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold-500);
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 300;
+  line-height: 1.15;
+  color: var(--ivory);
+  margin-bottom: 20px;
+}
+
+.section-title em {
+  font-style: italic;
+  color: var(--gold-400);
+}
+
+/* ── Keyframes ──────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse-gold {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(201,168,76,0.3); }
+  50%       { box-shadow: 0 0 0 12px rgba(201,168,76,0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33%      { transform: translateY(-12px) rotate(1deg); }
+  66%      { transform: translateY(-6px) rotate(-0.5deg); }
+}
+
+@keyframes rotateSlow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes scrollBounce {
+  0%, 100% { transform: translateY(0); opacity: 1; }
+  50%       { transform: translateY(8px); opacity: 0.4; }
+}

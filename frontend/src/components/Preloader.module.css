@@ -1,0 +1,185 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: #070709;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.8s cubic-bezier(0.77, 0, 0.175, 1), 
+              transform 0.8s cubic-bezier(0.77, 0, 0.175, 1),
+              visibility 0.8s;
+  visibility: visible;
+  opacity: 1;
+  overflow: hidden;
+}
+
+.fadeOut {
+  opacity: 0;
+  transform: translateY(-50px);
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Background image of the storefront */
+.loaderBg {
+  position: absolute;
+  inset: 0;
+  background-size: 100% 100%;
+  background-position: center;
+  opacity: 0.65;
+  filter: blur(1px) brightness(0.7);
+  z-index: 0;
+  transform: scale(1.06);
+  animation: bgZoom 3s cubic-bezier(0.1, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes bgZoom {
+  0% {
+    transform: scale(1.08) rotate(0.1deg);
+  }
+  100% {
+    transform: scale(1.02) rotate(0.1deg);
+  }
+}
+
+/* Vignette/shading overlay to focus on the logo */
+.loaderMask {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(7, 7, 9, 0.35) 0%, rgba(7, 7, 9, 0.95) 100%);
+  z-index: 1;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+}
+
+.logoWrapper {
+  width: min(200px, 50vw);
+  height: min(200px, 50vw);
+  position: relative;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Spinning decorative loading border */
+.outerSpinCircle {
+  position: absolute;
+  inset: -12px;
+  border-radius: 50%;
+  border: 1.5px dashed rgba(201, 168, 76, 0.3);
+  border-top-color: #f0d080;
+  border-bottom-color: #7c5c1e;
+  animation: spinLoader 5s linear infinite;
+  z-index: 1;
+}
+
+@keyframes spinLoader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Image container */
+.imageContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #070709;
+  border: 1px solid rgba(201, 168, 76, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  z-index: 2;
+}
+
+/* Gold logo image animate in and glow pulse */
+.goldLogoImage {
+  opacity: 0;
+  transform: scale(0.92);
+  animation: fadeInLogo 1.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s forwards,
+             shimmerGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes fadeInLogo {
+  0% {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes shimmerGlow {
+  0% {
+    filter: drop-shadow(0 0 2px rgba(201, 168, 76, 0.25));
+  }
+  100% {
+    filter: drop-shadow(0 0 12px rgba(240, 208, 128, 0.65));
+  }
+}
+
+/* Gold progress indicator */
+.progressContainer {
+  width: 140px;
+  height: 2px;
+  background: rgba(201, 168, 76, 0.08);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-top: 20px;
+  position: relative;
+}
+
+.progressBar {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, #7c5c1e, #c9a84c, #f0d080, #c9a84c, #7c5c1e);
+  box-shadow: 0 0 8px rgba(240, 208, 128, 0.5);
+  animation: fillBar 2.2s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+
+@keyframes fillBar {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+/* Status Text below bar */
+.statusText {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #c9a84c;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-top: 16px;
+  opacity: 0.85;
+  animation: textPulse 1.8s ease-in-out infinite alternate;
+}
+
+@keyframes textPulse {
+  0% {
+    opacity: 0.5;
+    letter-spacing: 0.15em;
+  }
+  100% {
+    opacity: 0.95;
+    letter-spacing: 0.22em;
+  }
+}

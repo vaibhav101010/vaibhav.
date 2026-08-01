@@ -1,0 +1,63 @@
+.fab {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 999;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: #25d366;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 24px rgba(37, 211, 102, 0.35), 0 0 0 0 rgba(37,211,102,0.4);
+  text-decoration: none;
+  transform: scale(0) rotate(-180deg);
+  opacity: 0;
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease;
+  animation: none;
+}
+
+.visible {
+  transform: scale(1) rotate(0deg);
+  opacity: 1;
+  animation: fabPulse 3s 2s ease-in-out infinite;
+}
+
+@keyframes fabPulse {
+  0%, 100% { box-shadow: 0 4px 24px rgba(37,211,102,0.35), 0 0 0 0 rgba(37,211,102,0.4); }
+  50%       { box-shadow: 0 4px 24px rgba(37,211,102,0.35), 0 0 0 12px rgba(37,211,102,0); }
+}
+
+.fab:hover {
+  transform: scale(1.1);
+  background: #20bd5c;
+}
+
+.tooltip {
+  position: absolute;
+  right: calc(100% + 12px);
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(7,7,9,0.92);
+  color: #f5f0e8;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  white-space: nowrap;
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: 1px solid rgba(201,168,76,0.15);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.fab:hover .tooltip {
+  opacity: 1;
+}
+
+@media (max-width: 480px) {
+  .fab { bottom: 20px; right: 20px; width: 52px; height: 52px; }
+}
