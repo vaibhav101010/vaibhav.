@@ -215,18 +215,23 @@ export default function SilverPageClient() {
                   const weight = parseFloat(weightMatch[0]);
                   const silverRate = rates.silver;
                   
-                  let makingChargePerGram = 10; // Default making charge (e.g., payal, bichhiya, rings)
+                  let makingChargePerGram = 10; // Default making charge fallback
                   const nameLower = product.name.toLowerCase();
                   
-                  if (nameLower.includes('necklace') || nameLower.includes('har') || nameLower.includes('chain') || nameLower.includes('set')) {
+                  if (nameLower.includes('necklace') || nameLower.includes('har') || nameLower.includes('set') || nameLower.includes('ring')) {
                     makingChargePerGram = 100;
+                  } else if (nameLower.includes('chudi') || nameLower.includes('bracelet') || nameLower.includes('bangle')) {
+                    makingChargePerGram = 50;
+                  } else if (nameLower.includes('kada') || nameLower.includes('chain')) {
+                    makingChargePerGram = 25;
                   } else if (nameLower.includes('payal') || nameLower.includes('anklet') || nameLower.includes('bichhiya') || nameLower.includes('toe ring')) {
                     makingChargePerGram = 10;
                   }
                   
                   if (silverRate) {
-                    // Base silver value based on API route + making charge per gram
-                    const finalPrice = Math.round(weight * (silverRate + makingChargePerGram));
+                    // actual pure silver me 20 minus karne ke baad making charges add krke fir 3% gst add krke
+                    const effectiveRate = (silverRate - 20) + makingChargePerGram;
+                    const finalPrice = Math.round(weight * effectiveRate * 1.03);
                     displayPrice = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(finalPrice);
                     originalDisplayPrice = undefined; // Hide original price if dynamic rate is applied
                   }
