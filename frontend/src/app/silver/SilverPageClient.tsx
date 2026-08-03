@@ -215,9 +215,18 @@ export default function SilverPageClient() {
                   const weight = parseFloat(weightMatch[0]);
                   const silverRate = rates.silver;
                   
+                  let makingChargePerGram = 10; // Default making charge (e.g., payal, bichhiya, rings)
+                  const nameLower = product.name.toLowerCase();
+                  
+                  if (nameLower.includes('necklace') || nameLower.includes('har') || nameLower.includes('chain') || nameLower.includes('set')) {
+                    makingChargePerGram = 100;
+                  } else if (nameLower.includes('payal') || nameLower.includes('anklet') || nameLower.includes('bichhiya') || nameLower.includes('toe ring')) {
+                    makingChargePerGram = 10;
+                  }
+                  
                   if (silverRate) {
-                    // Base silver value based on API route + 100 making charge per gram
-                    const finalPrice = Math.round(weight * (silverRate + 100));
+                    // Base silver value based on API route + making charge per gram
+                    const finalPrice = Math.round(weight * (silverRate + makingChargePerGram));
                     displayPrice = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(finalPrice);
                     originalDisplayPrice = undefined; // Hide original price if dynamic rate is applied
                   }
