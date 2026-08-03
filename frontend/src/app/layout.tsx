@@ -19,9 +19,27 @@ export const metadata: Metadata = {
     description: 'Golden Craftsmanship for Men of Class',
     type: 'website',
   },
+  verification: {
+    google: 'Kwq6jYyvdboP2VKue2jcl5EEpV-V_CZp6oaKZuFrN38',
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'JewelryStore',
+    name: 'M/S Suman Jewellers',
+    description: 'Luxury Diamond, Gold & Silver Jewellery in Mirzapur. GIA & IGI certified.',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Wellesley Ganj, near Sai Baba Temple',
+      addressLocality: 'Mirzapur',
+      addressRegion: 'UP',
+      addressCountry: 'IN'
+    },
+    url: 'https://www.sumanjeweller.com'
+  };
+
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -30,6 +48,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link
           href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap"
           rel="stylesheet"
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
       <body suppressHydrationWarning>

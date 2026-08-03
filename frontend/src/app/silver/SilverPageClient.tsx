@@ -25,6 +25,14 @@ export default function SilverPageClient() {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [scrollY, setScrollY] = useState(0);
   const [allProducts, setAllProducts] = useState(products);
+  const [rates, setRates] = useState<any>(null);
+
+  useEffect(() => {
+    fetch('/api/rates')
+      .then(res => res.json())
+      .then(data => setRates(data))
+      .catch(err => console.error('Failed to fetch rates', err));
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
@@ -197,9 +205,33 @@ export default function SilverPageClient() {
             <h2 className={styles.sectionTitle}>Delicate Jewelry</h2>
           </div>
           <div className={styles.grid}>
-            {filteredProducts.map((product, i) => (
-              <ProductCard key={product.name} product={product} index={i} />
-            ))}
+            {filteredProducts.map((product, i) => {
+              let displayPrice = product.price;
+              let originalDisplayPrice = product.originalPrice;
+
+              if (rates && product.weight) {
+                const weightMatch = product.weight.match(/[\d.]+/);
+                if (weightMatch) {
+                  const weight = parseFloat(weightMatch[0]);
+                  const silverRate = rates.silver;
+                  
+                  if (silverRate) {
+                    // Base silver value based on API route + 100 making charge per gram
+                    const finalPrice = Math.round(weight * (silverRate + 100));
+                    displayPrice = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(finalPrice);
+                    originalDisplayPrice = undefined; // Hide original price if dynamic rate is applied
+                  }
+                }
+              }
+
+              return (
+                <ProductCard 
+                  key={product.name} 
+                  product={{...product, price: displayPrice, originalPrice: originalDisplayPrice}} 
+                  index={i} 
+                />
+              );
+            })}
           </div>
         </div>
       </div>
