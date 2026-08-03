@@ -6,17 +6,26 @@ import Preloader from '@/components/Preloader';
 import Chatbot from '@/components/Chatbot';
 
 export const metadata: Metadata = {
-  title: 'M/S Suman Jewellers — Golden Craftsmanship for Men of Class',
+  title: 'M/S Suman Jewellers Mirzapur | Best Gold, Silver & Diamond Jewellery',
   description:
-    'Luxury Diamond, Gold & Silver Jewellery in Mirzapur. GIA & IGI certified. Visit us at Wellesley Ganj near Sai Baba Temple.',
-  keywords: ['jewellery', 'diamond', 'gold', 'silver', 'Mirzapur', 'GIA', 'IGI', 'Suman Jewellers'],
+    'Looking for the best jewellery shop in Mirzapur? Visit M/S Suman Jewellers at Wellesley Ganj for luxury 18K/22K Gold, 925 Silver, and GIA Certified Diamonds.',
+  keywords: [
+    'Suman Jewellers Mirzapur',
+    'M/S Suman Jewellers',
+    'best jewellery shop in Mirzapur',
+    'gold shop in Mirzapur',
+    'diamond jewellery Mirzapur',
+    'silver jewellery Mirzapur',
+    'Wellesley Ganj jewellers',
+    'IGI certified diamonds Mirzapur'
+  ],
   icons: {
     icon: '/images/logo-gold.png',
     apple: '/images/logo-gold.png',
   },
   openGraph: {
-    title: 'M/S Suman Jewellers',
-    description: 'Golden Craftsmanship for Men of Class',
+    title: 'M/S Suman Jewellers Mirzapur',
+    description: 'Best Gold, Silver & Diamond Jewellery Shop in Mirzapur',
     type: 'website',
   },
   verification: {
