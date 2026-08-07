@@ -3,7 +3,10 @@ import fs from 'fs';
 import path from 'path';
 
 // Using a file-based cache so it survives server restarts during development
-const CACHE_FILE = path.join(process.cwd(), '.rates-cache.json');
+// In production (serverless), use /tmp directory which is writable
+const CACHE_FILE = process.env.NODE_ENV === 'production' 
+  ? path.join('/tmp', '.rates-cache.json') 
+  : path.join(process.cwd(), '.rates-cache.json');
 
 // Helper function to fetch and write rates to cache
 async function updateRatesCache() {
@@ -122,10 +125,12 @@ async function updateRatesCache() {
         rates: finalRates
       }));
       console.log(`[Rates Scheduler] Rates cache updated successfully:`, JSON.stringify(finalRates));
-      return finalRates;
     } catch (err: any) {
       console.error(`[Rates Scheduler] Error writing rates cache:`, err.message);
     }
+    
+    // Always return finalRates if we fetched them successfully, even if caching failed
+    return finalRates;
   }
 
   return null;
