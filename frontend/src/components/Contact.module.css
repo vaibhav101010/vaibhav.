@@ -24,7 +24,14 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 32px;
-  align-items: start;
+  align-items: stretch;
+}
+
+/* Left column: ownerCard + map stacked */
+.leftCol {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 /* ── Owner Card ── */
@@ -36,6 +43,7 @@
   display: flex;
   flex-direction: column;
   gap: 28px;
+  flex-shrink: 0;
 }
 
 .ownerTop {
@@ -171,17 +179,13 @@ a.contactRow:hover { color: var(--gold-400); }
   transform: translateY(-2px);
 }
 
-/* ── Right Column ── */
-.rightCol {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
+/* ── Map Wrap ── */
 .mapWrap {
   border-radius: 12px;
   overflow: hidden;
   border: 1px solid rgba(201, 168, 76, 0.1);
+  flex: 1;
+  min-height: 220px;
 }
 
 /* QR Card */
@@ -297,10 +301,9 @@ a.contactRow:hover { color: var(--gold-400); }
   text-align: center;
 }
 
-/* Showroom Photo Card */
+/* Showroom Photo Card — right column, full height */
 .showroomImgWrap {
   position: relative;
-  height: 250px;
   border-radius: 12px;
   overflow: hidden;
   border: 1px solid rgba(201, 168, 76, 0.15);
@@ -309,6 +312,8 @@ a.contactRow:hover { color: var(--gold-400); }
               border-color 0.3s ease, 
               box-shadow 0.4s ease;
   z-index: 1;
+  align-self: stretch;
+  min-height: 400px;
 }
 
 .showroomImgWrap:hover {
